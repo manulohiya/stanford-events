@@ -983,6 +983,7 @@ export async function fetchCommencementEvents(): Promise<StanfordEvent[]> {
             url: COMMENCEMENT_URL,
             source: 'Stanford Events',
             topic: categorize(`Stanford Commencement ${speakerName}`, description, []),
+            tags: [],
             isFeatured: true,
           });
         }
@@ -1048,6 +1049,7 @@ export async function fetchCommencementEvents(): Promise<StanfordEvent[]> {
             url: `${GSB_BASE}${articlePath}`,
             source: 'GSB',
             topic: categorize(`GSB Commencement ${speakerName}`, description, []),
+            tags: [],
             isFeatured: true,
           });
         }
