@@ -23,7 +23,7 @@ const DEFAULT_FILTERS: EventFilters = {
   topics: [],
   sources: [],
   search: '',
-  dateRange: 'all',
+  dateRange: 'this-week',
   onlineOnly: false,
 };
 
@@ -123,7 +123,7 @@ export default function EventsClient({ initialEvents }: EventsClientProps) {
   const hasActiveFilters =
     filters.topics.length > 0 ||
     filters.sources.length > 0 ||
-    filters.dateRange !== 'all' ||
+    filters.dateRange !== 'this-week' ||
     filters.onlineOnly ||
     !!filters.search;
 
@@ -191,7 +191,7 @@ export default function EventsClient({ initialEvents }: EventsClientProps) {
               <div className="flex items-center gap-2">
                 <Layers className="h-4 w-4 text-gray-400" aria-hidden />
                 <span className="text-sm font-semibold text-gray-700">
-                  {hasActiveFilters ? 'Results' : 'All upcoming events'}
+                  {hasActiveFilters ? 'Results' : 'This week\'s events'}
                 </span>
                 <span className="rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
                   {filteredEvents.length}

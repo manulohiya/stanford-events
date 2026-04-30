@@ -7,6 +7,7 @@ import {
   fetchGSBEvents,
   fetchCommencementEvents,
 } from './stanford-events';
+import { fetchStanfordLiveEvents } from './stanford-live';
 import { deduplicate } from '@/lib/deduplicator';
 
 // Wrap each source so a failure never brings down the whole fetch
@@ -26,8 +27,9 @@ async function trySource(
 
 export async function fetchAllEvents(): Promise<StanfordEvent[]> {
   // Fan out to all sources in parallel
-  const [stanfordEvents, ee380Events, haiEvents, statsEvents, gsbEvents, commencementEvents] = await Promise.all([
+  const [stanfordEvents, liveEvents, ee380Events, haiEvents, statsEvents, gsbEvents, commencementEvents] = await Promise.all([
     trySource('Stanford Events API', fetchStanfordEventsAPI),
+    trySource('Stanford Live',       fetchStanfordLiveEvents),
     trySource('EE380 Colloquium',    fetchEE380Events),
     trySource('HAI',                 fetchHAIEvents),
     trySource('Statistics',          fetchStatisticsEvents),
@@ -37,6 +39,7 @@ export async function fetchAllEvents(): Promise<StanfordEvent[]> {
 
   const all: StanfordEvent[] = [
     ...stanfordEvents,
+    ...liveEvents,
     ...ee380Events,
     ...haiEvents,
     ...statsEvents,

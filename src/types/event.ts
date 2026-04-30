@@ -16,6 +16,7 @@ export type TopicCategory =
 
 export type EventSource =
   | 'Stanford Events'
+  | 'Stanford Live'
   | 'HAI'
   | 'SAIL'
   | 'EE380'
@@ -74,6 +75,7 @@ export const ALL_TOPICS: TopicCategory[] = [
 
 export const ALL_SOURCES: EventSource[] = [
   'Stanford Events',
+  'Stanford Live',
   'HAI',
   'SAIL',
   'EE380',
@@ -113,6 +115,7 @@ export const TOPIC_DOT_COLORS: Record<TopicCategory, string> = {
 
 export const SOURCE_LABELS: Record<EventSource, string> = {
   'Stanford Events': 'Stanford Events',
+  'Stanford Live':   'Stanford Live (Concerts)',
   'HAI':             'Human-Centered AI',
   'SAIL':            'Stanford AI Lab',
   'EE380':           'EE380 Colloquium',

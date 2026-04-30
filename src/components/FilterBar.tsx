@@ -14,9 +14,8 @@ interface FilterBarProps {
 }
 
 const DATE_RANGE_OPTIONS: Array<{ value: EventFilters['dateRange']; label: string }> = [
-  { value: 'all',        label: 'All upcoming' },
-  { value: 'this-week',  label: 'This week'    },
-  { value: 'this-month', label: 'This month'   },
+  { value: 'this-week',  label: 'This week'  },
+  { value: 'this-month', label: 'This month' },
 ];
 
 export default function FilterBar({
@@ -29,7 +28,7 @@ export default function FilterBar({
   const activeCount =
     filters.topics.length +
     filters.sources.length +
-    (filters.dateRange !== 'all' ? 1 : 0) +
+    (filters.dateRange !== 'this-week' ? 1 : 0) +
     (filters.onlineOnly ? 1 : 0) +
     (filters.search ? 1 : 0);
 
@@ -52,7 +51,7 @@ export default function FilterBar({
       topics: [],
       sources: [],
       search: '',
-      dateRange: 'all',
+      dateRange: 'this-week',
       onlineOnly: false,
     });
   }
