@@ -14,8 +14,9 @@ interface FilterBarProps {
 }
 
 const DATE_RANGE_OPTIONS: Array<{ value: EventFilters['dateRange']; label: string }> = [
-  { value: 'this-week',  label: 'This week'  },
-  { value: 'this-month', label: 'This month' },
+  { value: 'this-week',  label: 'This week'    },
+  { value: 'this-month', label: 'This month'   },
+  { value: 'all',        label: 'All upcoming' },
 ];
 
 export default function FilterBar({
